@@ -23,13 +23,12 @@
 module CU(
     input [3:0] OPCODE, //HYRJA NGA D_OUT_1
     output reg RegDst, //DALJET E CU, CU_OUT_x
-    output reg Jump,
-    output reg AluSrc,
+    output reg ALUSrc,
     output reg MemToReg,
     output reg RegWrite
     output reg MemRead,
     output reg MemWrite,
-    output reg[1:0] AluOp,
+    output reg[1:0] ALUOp,
     output reg Branch,
 );
     
