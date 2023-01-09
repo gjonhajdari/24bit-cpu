@@ -24,7 +24,7 @@ module RegisterFile(
 input wire[4:0] RS,
 input wire[4:0] RT,
 input wire[4:0] RD,
-input wire[31:0] WriteData,
+input wire[23:0] WriteData,
 input wire RegWrite,
 input wire Clock,
 output wire[23:0] ReadRS,
