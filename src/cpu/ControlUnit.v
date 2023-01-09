@@ -36,77 +36,72 @@ module CU(
     
 always @ (OPCODE)
 begin
-	case(OPCODE)
-		4'b0110: // PER R-FORMAT
-		begin
-			RegDst 		= 1;
-			Jump 		= 0;
-			AluSrc 		= 1;
-			MemToReg 	= 0;
-			RegWrite 	= 1;
-			MemRead 	= 0;
-			MemWrite 	= 0;
-			AluOp[1] 	= 1;
-			AluOp[0] 	= 0;
-			Branch 		= 0;
-		end
 
-		4'b0001: // PER ADDI
-		begin
-			RegDst 		= 0;
-			Jump 		= 0;
-			AluSrc 		= 1;
-			MemToReg 	= 0;
-			RegWrite 	= 1;
-			MemRead 	= 0;
-			MemWrite 	= 0;
-			AluOp[1] 	= 0;
-			AluOp[0] 	= 0;
-			Branch 		= 0;
-		end
+case(OPCODE)
+		
+4'b0110: //R-FORMAT
+begin
+assign RegDst = 1'b1;
+assign ALUSrc = 1'b0;
+assign MemToReg = 1'b0;
+assign RegWrite = 1'b1;
+assign MemRead = 1'b0;
+assign MemWrite = 1'b0;
+assign ALUOp = 2'b10 ;
+assign Branch = 1'b0;
+end
 
-		4'b0010: // PER LW
-		begin
-			RegDst 		= 0;
-			Jump 		= 0;
-			AluSrc 		= 1;
-			MemToReg 	= 1;
-			RegWrite 	= 1;
-			MemRead 	= 1;
-			MemWrite 	= 0;
-			AluOp[1] 	= 0;
-			AluOp[0] 	= 0;
-			Branch 		= 0;
-		end 
-			
-		4'b0011: // PER SW
-		begin
-			RegDst 		= 1'bX;
-			Jump 		= 0;
-			AluSrc 		= 1;
-			MemToReg 	= 0;
-			RegWrite 	= 1'bX;
-			MemRead 	= 0;
-			MemWrite 	= 1;
-			AluOp[1] 	= 0;
-			AluOp[0] 	= 0;
-			Branch 		= 0;
-		end 
-			
-		4'b0100: // PER BEQ
-		begin
-			RegDst 		= 0;
-			Jump 		= 0;
-			AluSrc 		= 1;
-			MemToReg 	= 0;
-			RegWrite 	= 1;
-			MemRead 	= 0;
-			MemWrite 	= 0;
-			AluOp[1] 	= 0;
-			AluOp[0] 	= 1;
-			Branch 		= 1;
-		end
-	endcase
+
+4'b0001:  //I-FORMAT
+begin
+assign RegDst = 1'b0;
+assign ALUSrc = 1'b1 ;
+assign MemToReg = 1'b0;
+assign RegWrite = 1'b1 ;
+assign MemRead = 1'b0;
+assign MemWrite = 1'b0 ;
+assign ALUOp = 2'b00 ;
+assign Branch = 1'b0;
+end
+
+4'b0010:      //LOAD SESQUI
+begin 
+assign RegDst = 1'b0;
+assign ALUSrc = 1'b1 ;
+assign MemToReg = 1'b1 ;
+assign RegWrite = 1'b1 ;
+assign MemRead = 1'b1 ;
+assign MemWrite = 1'b0 ;
+assign ALUOp = 2'b00 ;
+assign Branch = 1'b0 ;
+end
+
+4'b0011: //STORE SESQUI
+begin 
+assign RegDst = 1'bX;
+assign ALUSrc = 1'b1 ;
+assign MemToReg = 1'b0;
+assign RegWrite = 1'bX ;
+assign MemRead = 1'b0;
+assign MemWrite = 1'b1 ;
+assign ALUOp = 2'b00 ;
+assign Branch = 1'b0;
+end
+
+4'b0100: //BEQ
+begin 
+assign RegDst = 1'b0;
+assign ALUSrc = 1'b0 ;
+assign MemToReg = 1'b0;
+assign RegWrite = 1'b0 ;
+assign MemRead = 1'b0;
+assign MemWrite = 1'b0 ;
+assign ALUOp = 2'b01 ;
+assign Branch = 1'b1;
+end
+
+endcase
+	
 end
 
 endmodule
