@@ -60,6 +60,6 @@ ALU_1bit ALU23(A[23], B[23], 0,COUT[22], BNegate, AInvert, BNegate, ALUOp, Resul
 
 assign Zero = ~(Result[0] | Result[1] | Result[2] | Result[3]| Result[4]| Result[5]| Result[6]| Result[7]| Result[8]| Result[9]| Result[10]| Result[11]| Result[12]| Result[13]| Result[14]| Result[15]| Result[16]| Result[17]| Result[18]| Result[19]| Result[20]| Result[21]| Result[22]| Result[23]);
 
-assign Overflow = COUT[22] ^ CarryOut;
+ assign Overflow = COUT[22] ^ CarryOut;
  
 endmodule
