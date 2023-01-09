@@ -20,14 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Adder(
-    input A,
-    input B,
-    input CIN,
-    output Shuma,
-    output COUT
-    );
+module Mbledhesi_1bit(
+input A,
+input B,
+input CarryIn,
+output SUM,
+output COUT
+);
+
+assign SUM = CarryIn ^ A ^ B;
+assign COUT = CarryIn & A | CarryIn & B | A & B ; 
     
-    assign Shuma = A ^ B ^ CIN;
-    assign COUT = CIN & A | CIN & B | A & B;
+    
 endmodule
