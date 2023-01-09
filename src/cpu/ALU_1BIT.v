@@ -20,32 +20,29 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ALU_1BIT(
-    input A,
-    input B,
-    input CIN,
-    input AInvert,
-    input BInvert,
-    input Less,
-    input [1:0] Op,
-    output Result,
-    output CarryOut
-    );
-    
-   wire JoA, JoB, mA, mB, dhe_teli, ose_teli, mb_teli; 
-   
-   assign JoA = ~A;
-   assign JoB = ~B;
-   
-   mux2ne1 muxA(A, JoA, AInvert, mA);
-   mux2ne1 muxB(B, JoB, BInvert, mB);
-   
-   assign dhe_teli = mA & mB;
-   assign ose_teli = mA | mB;
-   
-   Mbledhesi m1(mA, mB, CIN, mb_teli, CarryOut);
-   
-   mux4ne1 MuxiKryesor(dhe_teli, ose_teli, mb_teli, Less, Op, Result);
-    
-    
+module ALU_1bit(
+input A,
+input B,
+input AInvert,
+input BInvert,
+input CarryIn,
+input LESS,
+input [1:0] Operation,
+output COUT,
+output Result
+);
+
+wire joA, joB, mA, mB, Dhe, Ose, Mbledhesi; 
+assign joA = ~A ;
+assign joB = ~B;
+
+mux2ne1 muxA(A, joA, AInvert, mA);
+mux2ne1 muxB(B, joB, BInvert, mB);
+
+assign Dhe = mA & mB;
+assign Ose = mA | mB;
+  
+Mbledhesi_1bit Adder(mA, mB, CarryIn, SUM, Mbledhesi, COUT);
+mux4ne1 muxALU(Dhe, Ose, Mbledhesi, LESS, Operation, Result);
+
 endmodule
