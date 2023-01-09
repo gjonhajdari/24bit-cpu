@@ -23,7 +23,7 @@
 module CPU(input Clock);
 
 //TELAT E BRENDSHEM TE CPU, SHIH CPU.PDF
-wire [5:0] opcode; //D_OUT_1
+wire [3:0] opcode; //D_OUT_1
 //CU_OUT_x
 wire RegDst, Jump, Branch, MemRead, MemWrite, RegWrite, MemToReg, ALUSrc;
 wire [1:0] ALUOp;
