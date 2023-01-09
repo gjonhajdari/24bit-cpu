@@ -21,12 +21,12 @@
 
 
 module DataMemory(
-input wire[31:0] Address,
-input wire[31:0] WriteData,
+input wire[23:0] Address,
+input wire[23:0] WriteData,
 input wire MemWrite,
 input wire MemRead,
 input wire Clock,
-output wire[31:0] ReadData
+output wire[23:0] ReadData
 );
 
 reg[7:0] dataMem[63:0];
@@ -39,10 +39,9 @@ begin
     if(MemWrite) 
         begin
             //bigEndian
-            dataMem[Address + 32'd0] <= WriteData[31:24];
-            dataMem[Address + 32'd1] <= WriteData[23:16];
-            dataMem[Address + 32'd2] <= WriteData[15:8];
-            dataMem[Address + 32'd3] <= WriteData[7:0];
+            dataMem[Address + 24'd0] <= WriteData[23:16];
+            dataMem[Address + 24'd1] <= WriteData[15:8];
+            dataMem[Address + 24'd2] <= WriteData[7:0];
            end
 end
 
@@ -52,10 +51,9 @@ $writememb("dataMemory.mem", dataMem);
 end
 
  
- assign ReadData[31:24] = dataMem[Address + 32'd0];
- assign ReadData[23:16] = dataMem[Address + 32'd1];
- assign ReadData[15:8] = dataMem[Address + 32'd2];
- assign ReadData[7:0] = dataMem[Address + 32'd3];
+ assign ReadData[23:16] = dataMem[Address + 24'd0];
+ assign ReadData[15:8] = dataMem[Address + 24'd1];
+ assign ReadData[7:0] = dataMem[Address + 24'd2];
 
 
 
