@@ -27,18 +27,18 @@ input wire[4:0] RD,
 input wire[31:0] WriteData,
 input wire RegWrite,
 input wire Clock,
-output wire[31:0] ReadRS,
-output wire[31:0] ReadRT
+output wire[23:0] ReadRS,
+output wire[23:0] ReadRT
     );
     
-reg[31:0] Registers[31:0];
+reg[23:0] Registers[23:0];
 
 //Reseto te gjithe regjistrat ne 0
 integer i;
 initial 
 begin
-for(i=0;i<32;i=i+1)
-   Registers[i] <= 32'd0; 
+for(i=0;i<24;i=i+1)
+   Registers[i] <= 24'd0; 
 end
 
 //Shkruaj ne regjiter
