@@ -51,5 +51,4 @@ end
 assign ReadRS = Registers[RS];
 assign ReadRT = Registers[RT];
 
-
 endmodule
