@@ -21,11 +21,11 @@
 
 
 module Mbledhesi_1bit(
-input A,
-input B,
-input CarryIn,
-output SUM,
-output COUT
+	input A,
+	input B,
+	input CarryIn,
+	output SUM,
+	output COUT
 );
 
 assign SUM = CarryIn ^ A ^ B;

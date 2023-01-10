@@ -21,11 +21,11 @@
 
 //SHIKO FOTO CPU.PDF
 module Datapath(
-input Clock, //HYRJE NGA CPU - TELI CPU_IN_1
-input RegDst, Jump, Branch, MemRead, 
-MemWrite, RegWrite, MemToReg, ALUSrc, //HYRJET NGA CU - TELAT CU_OUT_x
-input [1:0] ALUOp, //HYRJE NGA CU - TELAT CU_OUT_x
-output [5:0] opcode //DALJE PER NE CU - TELI D_OUT_1
+	input Clock, //HYRJE NGA CPU - TELI CPU_IN_1
+	input RegDst, Jump, Branch, MemRead, 
+	MemWrite, RegWrite, MemToReg, ALUSrc, //HYRJET NGA CU - TELAT CU_OUT_x
+	input [1:0] ALUOp, //HYRJE NGA CU - TELAT CU_OUT_x
+	output [5:0] opcode //DALJE PER NE CU - TELI D_OUT_1
 );
 
 //SHIKO FOTO DATAPATH.PDF
@@ -48,7 +48,6 @@ end
 always@(posedge Clock)
 begin
     pc_initial <= pc_next; //azhurimi i PC ne cdo teh pozitiv me adresen e ardhshme
-    
 end
 
 //T2 - PC rritet per 4 (ne sistemet 32 biteshe) per te gjitha instruksionet pervec BEQ, BNE, JUMP

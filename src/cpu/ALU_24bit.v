@@ -20,17 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module ALU_24bit(
-input [23:0] A,
-input [23:0] B,
-input ALUOp,
-input AInvert,
-input BNegate,
-output Zero,
-output Overflow,
-output CarryOut,
-output [23:0] Result
- );
+module ALU_24bit (
+	input [23:0] A,
+	input [23:0] B,
+	input ALUOp,
+	input AInvert,
+	input BNegate,
+	output Zero,
+	output Overflow,
+	output CarryOut,
+	output [23:0] Result
+);
 
 wire [23:0] COUT ;
 ALU_1bit ALU0(A[0], B[0], Result[23], BNegate, AInvert, BNegate, ALUOp, Result[0], COUT[0]);
@@ -60,6 +60,6 @@ ALU_1bit ALU23(A[23], B[23], 0,COUT[22], BNegate, AInvert, BNegate, ALUOp, Resul
 
 assign Zero = ~(Result[0] | Result[1] | Result[2] | Result[3]| Result[4]| Result[5]| Result[6]| Result[7]| Result[8]| Result[9]| Result[10]| Result[11]| Result[12]| Result[13]| Result[14]| Result[15]| Result[16]| Result[17]| Result[18]| Result[19]| Result[20]| Result[21]| Result[22]| Result[23]);
 
- assign Overflow = COUT[22] ^ CarryOut;
+assign Overflow = COUT[22] ^ CarryOut;
  
 endmodule

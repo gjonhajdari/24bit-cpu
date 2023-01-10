@@ -29,25 +29,25 @@ wire RegDst, Jump, Branch, MemRead, MemWrite, RegWrite, MemToReg, ALUSrc;
 wire [1:0] ALUOp;
 
 //inicializimi i Datapath    
-Datapath DP
-(
-Clock,
-RegDst, Jump, Branch, MemRead, MemWrite, RegWrite, MemToReg, ALUSrc,
-ALUOp,
-opcode
+Datapath DP (
+	Clock,
+	RegDst, Jump, Branch, MemRead, MemWrite, RegWrite, MemToReg, ALUSrc,
+	ALUOp,
+	opcode
 );
 
 //Inicializimi i COntrol Unit
-CU ControlUnit(opcode,
-RegDst, 
-Jump, 
-Branch, 
-MemRead, 
-MemToReg,
-ALUOp,
-MemWrite, 
-ALUSrc,
-RegWrite
+CU ControlUnit (
+	opcode,
+	RegDst, 
+	Jump, 
+	Branch, 
+	MemRead, 
+	MemToReg,
+	ALUOp,
+	MemWrite, 
+	ALUSrc,
+	RegWrite
 );
 
 endmodule

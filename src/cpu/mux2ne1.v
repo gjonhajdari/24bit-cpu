@@ -21,10 +21,10 @@
 
 
 module mux2ne1(
-input Hyrja0,
-input Hyrja1,
-input S,
-output Dalja
+	input Hyrja0,
+	input Hyrja1,
+	input S,
+	output Dalja
 );
     
 assign Dalja = S ? Hyrja0 : Hyrja1 ; 

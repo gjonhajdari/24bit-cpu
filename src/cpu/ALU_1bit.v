@@ -21,19 +21,19 @@
 
 
 module ALU_1bit(
-input A,
-input B,
-input AInvert,
-input BInvert,
-input CarryIn,
-input LESS,
-input [1:0] Operation,
-output COUT,
-output Result
+	input A,
+	input B,
+	input AInvert,
+	input BInvert,
+	input CarryIn,
+	input LESS,
+	input [1:0] Operation,
+	output COUT,
+	output Result
 );
 
 wire joA, joB, mA, mB, Dhe, Ose, Mbledhesi; 
-assign joA = ~A ;
+assign joA = ~A;
 assign joB = ~B;
 
 mux2ne1 muxA(A, joA, AInvert, mA);

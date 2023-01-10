@@ -20,12 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module mux4ne1(
-input Hyrja0,
-input Hyrja1,
-input Hyrja2,
-input Hyrja3,
-input [1:0] S,
-output Dalja
+	input Hyrja0,
+	input Hyrja1,
+	input Hyrja2,
+	input Hyrja3,
+	input [1:0] S,
+	output Dalja
 );
 // S 00 H0
 // S 01 H1
