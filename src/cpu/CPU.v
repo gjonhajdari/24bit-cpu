@@ -37,7 +37,7 @@ Datapath DP (
 );
 
 //Inicializimi i COntrol Unit
-CU ControlUnit (
+ControlUnit CU (
 	opcode,
 	RegDst, 
 	Jump, 

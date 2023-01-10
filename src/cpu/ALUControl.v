@@ -31,30 +31,23 @@ always @(ALUOp)
 begin
 
 case(ALUOp)
-	2'b00:   //Mbledhja per lw apo sw
-	begin
-		assign Operation = 3'b010; 
-		assign Bnegate = 1'b0; 
-	end
+	
+	// Mbledhja per ls apo ss
+	2'b00: assign Operation = 4'b0010;
 
-	2'b01:  //Zbritja per beq/bne
-	begin
-		assign Operation = 3'b010;
-		assign Bnegate = 1'b1;
-	end
+	// Zbritja per beq/bne
+	2'b01: assign Operation = 4'b1010;
+	
+	// MUL
+	2'b11: assign Operation = 4'b0101;
 
-	2'b11:  //MUL
-	begin 
-		assign Operation = 3'b100;
-		assign Bnegate = 1'b0;
-	end
-
-	2'b10:  //Funct 
+	// Operacionet sipas Funct
+	2'b10:
 	begin
 		case(Funct)
-			4'b0010: //mbledhja per r-format
+			4'b0010: // mbledhja per r-format
 			begin 
-				assign Operation = 3'b010;
+				assign Operation = 4'b0110;
 				assign Bnegate = 1'b0;
 			end
 
