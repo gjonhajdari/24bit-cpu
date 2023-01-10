@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 //ALU Control (CU_OUT_x, Function Code nga R-formati, Opcode, T19) - eshte shtuar ALUOp per I-format qe nuk eshte ne foto po kerkohet ne detyre
-module ALUControl(
+module ALUControl (
 	input  [3:0] Opcode,
 	output [1:0] RegDst,
 	output [1:0] ALUSrc,
@@ -37,19 +37,19 @@ case(ALUOp) // Pyet per vleren e ALUOp, 00-lw,sw; 01-beq,bne, 10-R-format, 11 - 
     2'b00: ALUOp = 4'b0010; // LW+SW (mbledhje)
     2'b01: ALUOp = 4'b0110; // BEQ+BNE (zbritje)
     2'b10: // R-Format
-        case(Funct)
-            4'b0000: ALUOp = 2'b10; // AND
-            4'b0001: ALUOp = 2'b10; // OR
-            4'b0010: ALUOp = 2'b10; // ADD
-            4'b0011: ALUOp = 2'b10; // SUB
-            4'b0100: ALUOp = 2'b10; // SLT
-        endcase
+	case(Funct)
+		4'b0000: ALUOp = 2'b10; // AND
+		4'b0001: ALUOp = 2'b10; // OR
+		4'b0010: ALUOp = 2'b10; // ADD
+		4'b0011: ALUOp = 2'b10; // SUB
+		4'b0100: ALUOp = 2'b10; // SLT
+	endcase
 
     2'b11: // I-format
-        case(Opcode)
-            4'b0001: ALUOp = 2'b00; // per ADDI
-            // 6'b000110: ALUOp = 4'b0000; // per ANDI
-        endcase
+	case(Opcode)
+		4'b0001: ALUOp = 2'b00; // per ADDI
+		// 6'b000110: ALUOp = 4'b0000; // per ANDI
+	endcase
 endcase
 end
 

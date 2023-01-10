@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module RegisterFile(
+module RegisterFile (
 	input wire[3:0] RS,
 	input wire[3:0] RT,
 	input wire[3:0] RD,
