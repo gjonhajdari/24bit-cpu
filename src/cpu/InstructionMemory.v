@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module InstructionMemory(
+module InstructionMemory (
 	input wire[23:0] PCAddress,
 	output wire[23:0] Instruction
 );

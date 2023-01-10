@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05/13/2022 11:13:47 AM
+// Create Date: 01/09/2023 09:45:22 PM
 // Design Name: 
 // Module Name: ALUControl
 // Project Name: 
@@ -19,38 +19,84 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//ALU Control (CU_OUT_x, Function Code nga R-formati, Opcode, T19) - eshte shtuar ALUOp per I-format qe nuk eshte ne foto po kerkohet ne detyre
+
 module ALUControl (
-	input  [3:0] Opcode,
-	output [1:0] RegDst,
-	output [1:0] ALUSrc,
-	output [1:0] MemToReg,
-	output [1:0] RegWrite,
-	output [1:0] MemWrite,
-	output [2:0] AluOp, 
-	output [1:0] Branch
+	input [1:0] ALUOp,
+	input [3:0] Funct,
+	output reg [3:0] Operation
 );
+
 
 always @(ALUOp)
 begin
-case(ALUOp) // Pyet per vleren e ALUOp, 00-lw,sw; 01-beq,bne, 10-R-format, 11 - I-format
-    2'b00: ALUOp = 4'b0010; // LW+SW (mbledhje)
-    2'b01: ALUOp = 4'b0110; // BEQ+BNE (zbritje)
-    2'b10: // R-Format
-	case(Funct)
-		4'b0000: ALUOp = 2'b10; // AND
-		4'b0001: ALUOp = 2'b10; // OR
-		4'b0010: ALUOp = 2'b10; // ADD
-		4'b0011: ALUOp = 2'b10; // SUB
-		4'b0100: ALUOp = 2'b10; // SLT
-	endcase
 
-    2'b11: // I-format
-	case(Opcode)
-		4'b0001: ALUOp = 2'b00; // per ADDI
-		// 6'b000110: ALUOp = 4'b0000; // per ANDI
-	endcase
+case(ALUOp)
+	2'b00:   //Mbledhja per lw apo sw
+	begin
+		assign Operation = 3'b010; 
+		assign Bnegate = 1'b0; 
+	end
+
+	2'b01:  //Zbritja per beq/bne
+	begin
+		assign Operation = 3'b010;
+		assign Bnegate = 1'b1;
+	end
+
+	2'b11:  //MUL
+	begin 
+		assign Operation = 3'b100;
+		assign Bnegate = 1'b0;
+	end
+
+	2'b10:  //Funct 
+	begin
+		case(Funct)
+			4'b0010: //mbledhja per r-format
+			begin 
+				assign Operation = 3'b010;
+				assign Bnegate = 1'b0;
+			end
+
+			4'b1010: //zbritja 
+			begin
+				assign Operation = 3'b010;
+				assign Bnegate = 1'b1;
+			end
+			
+			4'b0000: //dhe logjike
+			begin
+				assign Operation = 3'b000;
+				assign Bnegate = 1'b0;
+			end
+			
+			4'b0001: //ose logjike
+			begin
+				assign Operation = 3'b001;
+				assign Bnegate = 1'b0;
+			end
+			
+			4'b0011: //slt 
+			begin
+				assign Operation = 3'b011;
+				assign Bnegate = 1'b0;
+			end
+			
+			4'b0110: //sll
+			begin
+				assign Operation = 3'b110;
+				assign Bnegate = 1'b0;
+			end
+			
+			4'b0101: //xor
+			begin
+				assign Operation = 3'b101;
+				assign Bnegate = 1'b0;
+			end
+		endcase
+	end
 endcase
 end
+
 
 endmodule
