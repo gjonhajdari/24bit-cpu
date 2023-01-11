@@ -27,22 +27,28 @@ module ALU_1bit (
 	input BInvert,
 	input CarryIn,
 	input LESS,
-	input [1:0] Operation,
+	input [3:0] Operation,
 	output COUT,
 	output Result
 );
 
-wire joA, joB, mA, mB, Dhe, Ose, Mbledhesi; 
-assign joA = ~A;
-assign joB = ~B;
+wire notA, notB, A_out, B_out, and_out, or_out, adder_out; 
+assign notA = ~A;
+assign notB = ~B;
 
-mux2ne1 muxA(A, joA, AInvert, mA);
-mux2ne1 muxB(B, joB, BInvert, mB);
+// Vendosja e BInvert nga biti BNegate i Operation
+// assign BInvert = Operation[0];
 
-assign Dhe = mA & mB;
-assign Ose = mA | mB;
+MUX_2to1 muxA(A, notA, AInvert, A_out);
+MUX_2to1 muxB(B, notB, BInvert, B_out);
+
+assign and_out = A_out & B_out;
+assign or_out = A_out | B_out;
+
+assign OP = Operation[3:1];
   
-Mbledhesi_1bit Adder(mA, mB, CarryIn, SUM, Mbledhesi, COUT);
-mux4ne1 muxALU(Dhe, Ose, Mbledhesi, LESS, Operation, Result);
+Adder_1BIT Adder(A_out, B_out, CarryIn, adder_out, COUT);
+
+MUX_4to1 muxALU(and_out, or_out, adder_out, LESS, OP, Result);
 
 endmodule

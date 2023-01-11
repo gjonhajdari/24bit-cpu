@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Mbledhesi_1bit(
+module Adder_1BIT (
 	input A,
 	input B,
 	input CarryIn,
@@ -29,7 +29,6 @@ module Mbledhesi_1bit(
 );
 
 assign SUM = CarryIn ^ A ^ B;
-assign COUT = CarryIn & A | CarryIn & B | A & B ; 
-    
+assign COUT = CarryIn & A | CarryIn & B | A & B ;    
     
 endmodule

@@ -32,60 +32,33 @@ begin
 
 case(ALUOp)
 	
-	// Mbledhja per ls apo ss
-	2'b00: assign Operation = 4'b0010;
+	// Mbledhja per LS apo SS
+	2'b00: Operation = 4'b0010;
 
-	// Zbritja per beq/bne
-	2'b01: assign Operation = 4'b1010;
+	// Zbritja per BEQ/BNE
+	2'b01: Operation = 4'b1010;
 	
-	// MUL
-	2'b11: assign Operation = 4'b0101;
+	// MUL - ne baze te OPCODE
+	2'b11: Operation = 4'b0100;
 
 	// Operacionet sipas Funct
 	2'b10:
 	begin
 		case(Funct)
-			4'b0010: // mbledhja per r-format
-			begin 
-				assign Operation = 4'b0110;
-				assign Bnegate = 1'b0;
-			end
-
-			4'b1010: //zbritja 
-			begin
-				assign Operation = 3'b010;
-				assign Bnegate = 1'b1;
-			end
-			
-			4'b0000: //dhe logjike
-			begin
-				assign Operation = 3'b000;
-				assign Bnegate = 1'b0;
-			end
-			
-			4'b0001: //ose logjike
-			begin
-				assign Operation = 3'b001;
-				assign Bnegate = 1'b0;
-			end
-			
-			4'b0011: //slt 
-			begin
-				assign Operation = 3'b011;
-				assign Bnegate = 1'b0;
-			end
-			
-			4'b0110: //sll
-			begin
-				assign Operation = 3'b110;
-				assign Bnegate = 1'b0;
-			end
-			
-			4'b0101: //xor
-			begin
-				assign Operation = 3'b101;
-				assign Bnegate = 1'b0;
-			end
+			// AND
+			4'b0000: Operation = 4'b0000;
+			// OR
+			4'b0001: Operation = 4'b0001;
+			// ADD
+			4'b0010: Operation = 4'b0010;
+			// SUB
+			4'b0011: Operation = 4'b1010;
+			// SLT
+			4'b0100: Operation = 4'b0011;
+			// XOR
+			4'b0110: Operation = 4'b0101;
+			// SLL
+			4'b0111: Operation = 4'b0110;
 		endcase
 	end
 endcase

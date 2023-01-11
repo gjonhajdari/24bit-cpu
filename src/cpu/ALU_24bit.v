@@ -32,7 +32,7 @@ module ALU_24bit (
 	output [23:0] Result
 );
 
-wire [23:0] COUT ;
+wire [23:0] COUT;
 ALU_1bit ALU0(A[0], B[0], Result[23], BNegate, AInvert, BNegate, ALUOp, Result[0], COUT[0]);
 ALU_1bit ALU1(A[1], B[1], 0, COUT[0], AInvert, BNegate, ALUOp, Result[1], COUT[1]);
 ALU_1bit ALU2(A[2], B[2], 0, COUT[1], BNegate, AInvert, BNegate, ALUOp, Result[2], COUT[2]);

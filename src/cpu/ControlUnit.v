@@ -37,7 +37,7 @@ always @ (OPCODE)
 begin
 
 case(OPCODE)
-	4'b0110:	//R-FORMAT
+	4'b0110:	// R-FORMAT
 	begin
 		assign RegDst 	= 1'b1;
 		assign ALUSrc 	= 1'b0;
@@ -49,7 +49,7 @@ case(OPCODE)
 		assign Branch 	= 1'b0;
 	end
 
-	4'b0001:	//I-FORMAT
+	4'b0001:	// I-FORMAT
 	begin
 		assign RegDst 	= 1'b0;
 		assign ALUSrc 	= 1'b1;
@@ -61,7 +61,7 @@ case(OPCODE)
 		assign Branch 	= 1'b0;
 	end
 
-	4'b0010:	//LOAD SESQUI
+	4'b0010:	// LOAD SESQUI (LS)
 	begin 
 		assign RegDst 	= 1'b0;
 		assign ALUSrc 	= 1'b1;
@@ -73,7 +73,7 @@ case(OPCODE)
 		assign Branch 	= 1'b0;
 	end
 
-	4'b0011:	//STORE SESQUI
+	4'b0011:	// STORE SESQUI (SS)
 	begin 
 		assign RegDst 	= 1'bX;
 		assign ALUSrc 	= 1'b1;
@@ -85,7 +85,7 @@ case(OPCODE)
 		assign Branch 	= 1'b0;
 	end
 
-	4'b0100:	//BEQ
+	4'b0100:	// BEQ
 	begin 
 		assign RegDst 	= 1'b0;
 		assign ALUSrc 	= 1'b0;

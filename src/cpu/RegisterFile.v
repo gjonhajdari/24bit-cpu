@@ -49,7 +49,7 @@ assign $r12	 = Register[4'b1100];
 assign $r13	 = Register[4'b1101];
 assign $r14	 = Register[4'b1110];
 assign $r15	 = Register[4'b1111];
-
+// Special register for multiply function
 assign MULREG = reg[47:0];
 
 // Initialize registers with a base value of 0
