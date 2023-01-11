@@ -25,11 +25,11 @@ module ControlUnit (
     output reg RegDst, //DALJET E ControlUnit, CU_OUT_x
     output reg ALUSrc,
     output reg MemToReg,
-    output reg RegWrite
+    output reg RegWrite,
     output reg MemRead,
     output reg MemWrite,
     output reg[1:0] ALUOp,
-    output reg Branch,
+    output reg Branch
 );
     
     

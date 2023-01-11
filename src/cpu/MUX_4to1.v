@@ -28,13 +28,11 @@ module MUX_4to1 (
 	output OUT
 );
 
-
 // S 000 H0
 // S 001 H1
 // S 010 H2
 // S 011 H3
-
     
-assign OUT = S[1] ? (S[0] ? Hyrja3 : Hyrja2) : (S[0] ? Hyrja1 : Hyrja0);
+assign OUT = Selector[1] ? (Selector[0] ? input3 : input2) : (Selector[0] ? input1 : input0);
     
 endmodule
