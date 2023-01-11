@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module MUX_2to1(
-	input Hyrja0,
-	input Hyrja1,
-	input S,
-	output Dalja
+module MUX_2to1 (
+	input input0,
+	input input1,
+	input Selector,
+	output OUT
 );
     
-assign Dalja = S ? Hyrja0 : Hyrja1 ; 
+assign OUT = Selector ? input0 : input1 ; 
     
 endmodule

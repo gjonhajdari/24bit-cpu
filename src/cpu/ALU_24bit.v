@@ -25,7 +25,7 @@ module ALU_24bit (
 	input [23:0] B,
 	input AInvert,
 	input BNegate,
-	input ALUOp[2:0],
+	input [2:0] ALUOp,
 	output Zero,
 	output Overflow,
 	output CarryOut,
