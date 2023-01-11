@@ -25,10 +25,10 @@ module Adder_1BIT (
 	input B,
 	input CarryIn,
 	output SUM,
-	output COUT
+	output CarryOut
 );
 
 assign SUM = CarryIn ^ A ^ B;
-assign COUT = CarryIn & A | CarryIn & B | A & B ;    
+assign CarryOut = CarryIn & A | CarryIn & B | A & B ;    
     
 endmodule
