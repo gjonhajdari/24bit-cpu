@@ -23,7 +23,7 @@
 module ALU_24bit (
 	input [23:0] A,
 	input [23:0] B,
-	input ALUOp,
+	input ALUOp[1:0],
 	input AInvert,
 	input BNegate,
 	output Zero,
