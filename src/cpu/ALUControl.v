@@ -22,6 +22,8 @@ case(ALUOp)
 	// MUL - ne baze te OPCODE
 	2'b11: Operation = 4'b0100;
 
+	// 
+
 	// Operacionet sipas Funct
 	2'b10:
 	begin

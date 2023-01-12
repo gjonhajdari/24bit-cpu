@@ -41,7 +41,7 @@ assign shifter2beq = {{10{instruction[11]}}, instruction[11:0], 2'b00};
 InstructionMemory IM(pc_initial, instruction); 
 
 // T6 - Percaktimi nese RD eshte RD (te R-formati) apo RD = RT (te I-formati) - MUX M1 ne foto
-assign mux_regfile = (RegDst == 1'b1) ? instruction[11:5] : instruction[15:12]; 
+assign mux_regfile = (RegDst == 1'b1) ? instruction[11:8] : instruction[15:12]; 
 
 // T12 - Zgjerimi nga 12 ne 24 bit - 12 bit si MSB dhe pjesa e instruction[11:0] - S1 ne foto
 assign Zgjerimi = {{12{instruction[11]}}, instruction[11:0]};
@@ -79,7 +79,7 @@ assign pcbeq = (andMuxBranch == 1'b1) ? beqAddress : pc3;
 
 // T2 - Teli qe update-on PC (3 mundesite PC+3, PCBEQ, PCJUMP)
 // assign pc_next = (Jump == 1'b1) ? jumpAddress : pcbeq;
-assign pc_next = pc_beq; // Pasi qe nuk kemi Jump
+assign pc_next = pcbeq; // Pasi qe nuk kemi Jump
 
 // Teli D_OUT_1 qe i dergohet CU
 assign opcode = instruction[23:20];
