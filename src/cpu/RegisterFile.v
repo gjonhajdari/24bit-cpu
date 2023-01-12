@@ -1,23 +1,5 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 08/01/2023 1:56 PM
-// Design Name: 
-// Module Name: RegisterFile
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+
 
 module RegisterFile (
 	input wire[3:0] RS,
@@ -49,6 +31,7 @@ assign r12	 = Register[4'b1100];
 assign r13	 = Register[4'b1101];
 assign r14	 = Register[4'b1110];
 assign r15	 = Register[4'b1111];
+
 // Special register for multiply function
 reg[47:0] MULREG;
 
