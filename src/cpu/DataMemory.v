@@ -19,11 +19,6 @@ always@(posedge Clock)
 begin
     if(MemWrite) 
 	begin
-		if (Address < 10)
-		begin
-			Address = Address + 10;
-		end
-
 		//bigEndian
 		dataMem[Address] <= WriteData[23:16];
 		dataMem[Address + 24'd1] <= WriteData[15:8];
