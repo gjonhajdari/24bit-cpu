@@ -6,10 +6,10 @@ module RegisterFile (
 	input wire[3:0] RT,
 	input wire[3:0] RD,
 	input wire [23:0] WriteData,
-	output [23:0] ReadRS,
-	output [23:0] ReadRT,
 	input RegWrite,
 	input Clock,
+	output [23:0] ReadRS,
+	output [23:0] ReadRT,
 );
 
 reg[23:0] Register[15:0];
@@ -35,16 +35,6 @@ assign r15	 = Register[4'b1111];
 // Special register for multiply function
 reg[47:0] MULREG;
 
-// Initialize registers with a base value of 0
-integer i;
-
-initial
-begin
-	for (i = 0; i < 16; i = i + 1)
-	begin
-		Register[i] = 24'd0;	
-	end
-end
 
 always @ (posedge Clock)
 begin

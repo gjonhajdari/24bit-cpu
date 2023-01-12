@@ -21,13 +21,13 @@ Datapath DP (
 ControlUnit CU (
 	opcode,
 	RegDst, 
-	Branch, 
-	MemRead, 
-	MemToReg,
-	ALUOp,
-	MemWrite, 
 	ALUSrc,
-	RegWrite
+	MemToReg,
+	RegWrite,
+	MemRead, 
+	MemWrite, 
+	Branch, 
+	ALUOp
 );
 
 endmodule
