@@ -1,49 +1,29 @@
-module ALU1bit_test();
+module ALU_1bit (
+	input A,
+	input B,
+	input AInvert,
+	input BInvert,
+	input CarryIn,
+	input LESS,
+	input [2:0] Operation,
+	output CarryOut,
+	output Result
+);
 
-reg A, B, AInvert, BInvert, CarryIn, LESS;
-reg [2:0] Operation;
-wire COUT, Result;
+wire notA, notB, A_out, B_out, and_out, or_out, adder_out, xor_out; 
+assign notA = ~A;
+assign notB = ~B;
 
-initial
-$monitor ("A=%b; B=%b; AInvert=%b; BInvert=%b; CarryIn=%b; Operation=%b; Result=%b", A, B, LESS, AInvert, BInvert, Operation, Result, COUT);
+MUX_2to1 muxA(A, notA, AInvert, A_out);
+MUX_2to1 muxB(B, notB, BInvert, B_out);
 
-initial
-begin
-	//TEST AND
-	#0 A=1'b0;  B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b0; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b1; B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b1; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
+assign and_out = A_out & B_out;
+assign or_out = A_out | B_out;
+assign xor_out = A_out ^ B_out;
 
-	//TEST OR
-	#0 A=1'b0;  B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b01;
-	#10 A=1'b0; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b01;
-	#10 A=1'b1; B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b01;
-	#10 A=1'b1; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b01;
+  
+Adder_1BIT Adder(A_out, B_out, CarryIn, adder_out, CarryOut);
 
-	//TEST ADD
-	#0 A=1'b0;  B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b0; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b1; B=1'b0; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b1; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b0; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b1; B=1'b1; AInvert=1'b0; BInvert=1'b0; CarryIn=1'b1; LESS=1'b0; Operation=2'b10;
-
-	//TEST SUB
-	#0 A=1'b0;  B=1'b0; AInvert=1'b0; BInvert=1'b1; CarryIn=1'b1; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b0; B=1'b1; AInvert=1'b0; BInvert=1'b1; CarryIn=1'b1; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b1; B=1'b0; AInvert=1'b0; BInvert=1'b1; CarryIn=1'b1; LESS=1'b0; Operation=2'b10;
-	#10 A=1'b1; B=1'b1; AInvert=1'b0; BInvert=1'b1; CarryIn=1'b1; LESS=1'b0; Operation=2'b10;
-
-	//NOR
-	#0 A=1'b0;  B=1'b0; AInvert=1'b1; BInvert=1'b1; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b0; B=1'b1; AInvert=1'b1; BInvert=1'b1; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b1; B=1'b0; AInvert=1'b1; BInvert=1'b1; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-	#10 A=1'b1; B=1'b1; AInvert=1'b1; BInvert=1'b1; CarryIn=1'b0; LESS=1'b0; Operation=2'b00;
-
-	#10 $stop;
-end
-
-ALU_1BIT ALUTest(A, B, AInvert, BInvert, CarryIn, LESS, Operation, COUT, Result);
-
+MUX_4to1 muxALU(and_out, or_out, adder_out, LESS, xor_out, Operation, Result);
 
 endmodule
