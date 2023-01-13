@@ -27,6 +27,6 @@ assign xor_out = A_out ^ B_out;
   
 Adder_1BIT Adder(A_out, B_out, CarryIn, adder_out, CarryOut);
 
-MUX_4to1 muxALU(and_out, or_out, adder_out, LESS, xor_out, Operation, Result);
+MUX_5to1 muxALU(and_out, or_out, adder_out, LESS, xor_out, Operation, Result);
 
 endmodule

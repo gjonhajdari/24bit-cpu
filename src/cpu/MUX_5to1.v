@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module MUX_4to1 (
+module MUX_5to1 (
 	input input0, // AND
 	input input1, // OR
 	input input2, // Adder
