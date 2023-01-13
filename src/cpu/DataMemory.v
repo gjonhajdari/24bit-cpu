@@ -7,7 +7,7 @@ module DataMemory (
 	input wire MemWrite,
 	input wire MemRead,
 	input wire Clock,
-	output wire [23:0] ReadData
+	output wire [23:0] ReadData,
 );
 
 reg[7:0] dataMem[127:0];

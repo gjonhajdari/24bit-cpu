@@ -8,7 +8,7 @@ module MUX_4to1 (
 	// input input4, // MUL
 	input input5, // XOR
 	input [2:0] Selector,
-	output reg OUT
+	output reg OUT,
 );
 
 always @(Selector)

@@ -10,7 +10,7 @@ module ControlUnit (
     output reg MemRead,
     output reg MemWrite,
     output reg [1:0] ALUOp,
-    output reg Branch
+    output reg Branch,
 );
     
     

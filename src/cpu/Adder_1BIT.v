@@ -6,7 +6,7 @@ module Adder_1BIT (
 	input B,
 	input CarryIn,
 	output SUM,
-	output CarryOut
+	output CarryOut;
 );
 
 assign SUM = CarryIn ^ A ^ B;

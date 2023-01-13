@@ -3,7 +3,7 @@
 
 module InstructionMemory (
 	input wire[23:0] PCAddress,
-	output wire[23:0] Instruction
+	output wire[23:0] Instruction,
 );
 
 reg[7:0] instrMem[127:0];
