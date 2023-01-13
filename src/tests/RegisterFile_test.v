@@ -17,3 +17,4 @@ begin
 	#5 RS = 4'd8; RT = 4'd9;
 	#5 $stop;
 end
+endmodule 
