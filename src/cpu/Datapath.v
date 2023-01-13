@@ -3,10 +3,9 @@
 // SHIKO FOTO CPU.PDF
 module Datapath (
 	input Clock, // HYRJE NGA CPU - TELI CPU_IN_1
-	input RegDst, Branch, MemRead, 
-	MemWrite, RegWrite, MemToReg, ALUSrc, // HYRJET NGA CU - TELAT CU_OUT_x
+	input RegDst, Branch, MemRead, MemWrite, RegWrite, MemToReg, ALUSrc, // HYRJET NGA CU - TELAT CU_OUT_x
 	input [1:0] ALUOp, //HYRJE NGA CU - TELAT CU_OUT_x
-	output [3:0] opcode, //DALJE PER NE CU - TELI D_OUT_1
+	output [3:0] opcode //DALJE PER NE CU - TELI D_OUT_1
 );
 
 //SHIKO FOTO DATAPATH.PDF

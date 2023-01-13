@@ -9,7 +9,7 @@ module RegisterFile (
 	input RegWrite,
 	input Clock,
 	output [23:0] ReadRS,
-	output [23:0] ReadRT,
+	output [23:0] ReadRT
 );
 
 reg[23:0] Register[15:0];

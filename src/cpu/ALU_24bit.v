@@ -10,7 +10,7 @@ module ALU_24bit (
 	output Zero,
 	output Overflow,
 	output CarryOut,
-	output [23:0] Result;
+	output [23:0] Result
 );
 
 wire [23:0] COUT;

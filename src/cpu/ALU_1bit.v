@@ -10,7 +10,7 @@ module ALU_1bit (
 	input LESS,
 	input [2:0] Operation,
 	output CarryOut,
-	output Result,
+	output Result
 );
 
 wire notA, notB, A_out, B_out, and_out, or_out, adder_out, xor_out; 
