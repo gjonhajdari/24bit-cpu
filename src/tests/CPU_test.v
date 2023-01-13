@@ -2,7 +2,6 @@
 
 
 module CPU_test();
-
 reg Clock;
 integer i;
 
