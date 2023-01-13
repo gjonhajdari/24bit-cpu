@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 
-module ALU_24bit (
+module ALU_24BIT (
 	input [23:0] A,
 	input [23:0] B,
 	input AInvert,

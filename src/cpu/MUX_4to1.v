@@ -23,13 +23,5 @@ begin
 	endcase
 end
 
-// Selector 000 input0
-// Selector 001 input1
-// Selector 010 input2
-// Selector 011 input3
-// Selector 100	input4
-// Selector 101	input5
-    
-// assign OUT = Selector[1] ? (Selector[0] ? input3 : input2) : (Selector[0] ? input1 : input0);
     
 endmodule
