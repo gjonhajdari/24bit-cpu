@@ -14,14 +14,13 @@ module MUX_4to1 (
 always @(Selector)
 begin
 	case (Selector)
-	begin
 		3'b000: OUT = input0;
 		3'b001: OUT = input1;
 		3'b010: OUT = input2;
 		3'b011: OUT = input3;
 		3'b100: OUT = input4;
 		3'b101: OUT = input5;
-	end
+	endcase
 end
 
 // Selector 000 input0
