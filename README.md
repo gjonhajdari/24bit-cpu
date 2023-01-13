@@ -1,8 +1,11 @@
 # 24bit-cpu
 A team [university](https://fiek.uni-pr.edu) project focused on designing a functioning 24-bit CPU that can calculate and perform some MIPS instructions.
 
+### Datapath visualization
+![CPU Schematics](https://github.com/GjonHajdari/24bit-cpu/blob/main/CPU%20Schematic.png)
+
 ### MIPS code in instruction memory
-```x86asm
+```Assembly
 addi $r1, $zero, 10
 addi $r2, $zero, 2
 lw $r3, 0($r1)
