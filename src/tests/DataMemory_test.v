@@ -1,9 +1,10 @@
 module DataMemory_test();
-
-reg [23:0] Address;
-reg [23:0] WriteData;
-reg MemWrite, MemRead, Clock;
-reg [23:0] ReadData;
+ reg  [23:0] Address;
+ reg  [23:0] WriteData; 
+ reg  Clock;
+ reg  MemWrite;
+ reg MemRead;
+ wire [23:0] ReadData;
 
 initial 
 begin 
@@ -15,7 +16,7 @@ begin
 	#5 $stop;
 end
 
-DataMemory DM(Address, WriteData, MemWrite, MemRead, Clock, ReadData);
+DataMemory DM(Address, WriteData, Clock, MemWrite, MemRead, ReadData);
     
 
 endmodule

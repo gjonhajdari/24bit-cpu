@@ -12,7 +12,7 @@ module ControlUnit (
     output reg [1:0] ALUOp,
     output reg Branch
 );
-    
+
     
 always @ (OPCODE)
 begin
@@ -20,62 +20,62 @@ begin
 case(OPCODE)
 	4'b0110:	// R-FORMAT
 	begin
-		assign RegDst 	= 1'b1;
-		assign ALUSrc 	= 1'b0;
-		assign MemToReg	= 1'b0;
-		assign RegWrite = 1'b1;
-		assign MemRead 	= 1'b0;
-		assign MemWrite = 1'b0;
-		assign ALUOp 	= 2'b10;
-		assign Branch 	= 1'b0;
+		RegDst 	= 1'b1;
+		ALUSrc 	= 1'b0;
+		MemToReg	= 1'b0;
+		RegWrite = 1'b1;
+		MemRead 	= 1'b0;
+		MemWrite = 1'b0;
+		ALUOp 	= 2'b10;
+		Branch 	= 1'b0;
 	end
 
 	4'b0001:	// I-FORMAT
 	begin
-		assign RegDst 	= 1'b0;
-		assign ALUSrc 	= 1'b1;
-		assign MemToReg = 1'b0;
-		assign RegWrite = 1'b1;
-		assign MemRead	= 1'b0;
-		assign MemWrite = 1'b0;
-		assign ALUOp 	= 2'b00;
-		assign Branch 	= 1'b0;
+		RegDst 	= 1'b0;
+		ALUSrc 	= 1'b1;
+		MemToReg = 1'b0;
+		RegWrite = 1'b1;
+		MemRead	= 1'b0;
+		MemWrite = 1'b0;
+		ALUOp 	= 2'b00;
+		Branch 	= 1'b0;
 	end
 
 	4'b0010:	// LOAD SESQUI (LS)
 	begin 
-		assign RegDst 	= 1'b0;
-		assign ALUSrc 	= 1'b1;
-		assign MemToReg = 1'b1;
-		assign RegWrite = 1'b1;
-		assign MemRead 	= 1'b1;
-		assign MemWrite	= 1'b0;
-		assign ALUOp 	= 2'b00;
-		assign Branch 	= 1'b0;
+		RegDst 	= 1'b0;
+		ALUSrc 	= 1'b1;
+		MemToReg = 1'b1;
+		RegWrite = 1'b1;
+		MemRead 	= 1'b1;
+		MemWrite	= 1'b0;
+		ALUOp 	= 2'b00;
+		Branch 	= 1'b0;
 	end
 
 	4'b0011:	// STORE SESQUI (SS)
 	begin 
-		assign RegDst 	= 1'bX;
-		assign ALUSrc 	= 1'b1;
-		assign MemToReg = 1'b0;
-		assign RegWrite = 1'bX;
-		assign MemRead 	= 1'b0;
-		assign MemWrite = 1'b1;
-		assign ALUOp 	= 2'b00;
-		assign Branch 	= 1'b0;
+		RegDst 	= 1'bX;
+		ALUSrc 	= 1'b1;
+		MemToReg = 1'b0;
+		RegWrite = 1'bX;
+		MemRead 	= 1'b0;
+		MemWrite = 1'b1;
+		ALUOp 	= 2'b00;
+		Branch 	= 1'b0;
 	end
 
 	4'b0100:	// BEQ
 	begin 
-		assign RegDst 	= 1'b0;
-		assign ALUSrc 	= 1'b0;
-		assign MemToReg = 1'b0;
-		assign RegWrite = 1'b0;
-		assign MemRead 	= 1'b0;
-		assign MemWrite = 1'b0;
-		assign ALUOp 	= 2'b01;
-		assign Branch 	= 1'b1;
+		RegDst 	= 1'b0;
+		ALUSrc 	= 1'b0;
+		MemToReg = 1'b0;
+		RegWrite = 1'b0;
+		MemRead 	= 1'b0;
+		MemWrite = 1'b0;
+		ALUOp 	= 2'b01;
+		Branch 	= 1'b1;
 	end
 endcase
 	

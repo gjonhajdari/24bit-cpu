@@ -12,7 +12,6 @@ always @(ALUOp)
 begin
 
 case(ALUOp)
-	
 	// Mbledhja per LS apo SS
 	2'b00: Operation = 4'b0010;
 
@@ -21,8 +20,6 @@ case(ALUOp)
 	
 	// MUL - ne baze te OPCODE
 	2'b11: Operation = 4'b0100;
-
-	// 
 
 	// Operacionet sipas Funct
 	2'b10:
