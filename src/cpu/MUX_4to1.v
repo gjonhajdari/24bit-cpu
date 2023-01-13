@@ -5,7 +5,7 @@ module MUX_4to1 (
 	input input1, // OR
 	input input2, // Adder
 	input input3, // LESS
-	// input input4, // MUL
+	input input4, // MUL
 	input input5, // XOR
 	input [2:0] Selector,
 	output reg OUT,
