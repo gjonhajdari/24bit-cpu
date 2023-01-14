@@ -58,7 +58,7 @@ ALUControl AC(ALUOp, instruction[3:0], ALUCtrl);
 // inicializimi i ALU (T7, T10, T19[3], T19[2], T19[1:0], T20, T11, T21, T22)
 ALU_24BIT ALU(readData1, mux_ALU, 0, ALUCtrl[3], ALUCtrl[2:0], zerof, overflow, carryout, ALU_Out);
 
-// inicializimi i Data Memory (T11, T8, CU_OUT_x, CU_OUT_x, CPU_IN_1, T13) 
+// inicializimi i Data Memory (T11, T8, CU_OUT_x, CU_OUT_x, CPU_IN_1, T13)
 DataMemory DM(ALU_Out, readData2, MemWrite, MemRead, Clock, memToMux);
 
 // T9 - Teli qe i dergon te dhenat nga MUX - M3 ne Regfile
